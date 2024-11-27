@@ -1,0 +1,66 @@
+{
+  "billing_address": {
+    "name": "SANDRA SAULGRIEZE",
+    "address": "14 The Dele",
+    "city": "Whitefield Hall",
+    "state": "Bettystown",
+    "country": "Meath",
+    "postal_code": "A92N27C"
+  },
+  "accounts": [
+    {"iban": "AL472121100900000002356987411", "bic": "HBUKGB4B", "note": ""},
+    {"iban":  "CY17002001280000001200527600", "bic": "AAAABBCC123", "note": "(You cannot use this IBAN for bank transfers. Please use the IBAN found in the app)"},
+    {"iban": "DE89370400440532013000", "bic": "UNCRITMMXXX", "note": "(You cannot use this IBAN for bank transfers. Please use the IBAN found in the app)"}
+  ],
+  "currency_symbol": "€",
+  "balance_summary": {
+    "data": [
+      {
+        "product": "Account (Current Account)",
+        "open_balance": 2.52,
+        "money_out": 1944.09,
+        "money_in": 1978.00,
+        "closing_balance": 36.43
+      }
+    ],
+    "note": "The balance on your statement might differ from balance shown in your app. The statement balance only reflects completed transactions while the app shows the balance available for use, which accounts for pending transactions."
+  },
+  "transactions": {
+    "start_date": "2023-02-01T18:25:43.511Z",
+    "end_date": "2023-03-29T18:25:43.511Z",
+    "records": [
+      {
+        "date": "2023-02-03T18:25:43.511Z",
+        "description": "Apple Pay Top-Up by *5453",
+        "description_note": "",
+        "money_out": null,
+        "money_in": 50.00,
+        "balance": 52.52
+      },
+      {
+        "date": "2023-02-03T18:25:43.511Z",
+        "description": "Apple Pay Top-Up by *5453",
+        "description_note": "",
+        "money_out": null,
+        "money_in": 100.00,
+        "balance": 152.52
+      },
+      {
+        "date": "2023-02-03T18:25:43.511Z",
+        "description": "To LINA MILLER SAULGRIEZE",
+        "description_note": "To LINA MILLER SAULGRIEZE",
+        "money_out": 100.00,
+        "money_in": null,
+        "balance": 52.52
+      },
+      {
+        "date": "2023-02-07T18:25:43.511Z",
+        "description": "To LINA MILLER SAULGRIEZE",
+        "description_note": "To LINA MILLER SAULGRIEZE",
+        "money_out": 10.00,
+        "money_in": null,
+        "balance": 42.52
+      }
+    ]
+  }
+}
