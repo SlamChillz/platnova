@@ -11,6 +11,7 @@ import (
 	"github.com/johnfercher/maroto/v2/pkg/core"
 	"github.com/johnfercher/maroto/v2/pkg/props"
 
+	"github.com/slamchillz/platnova/constant"
 	"github.com/slamchillz/platnova/types"
 	"github.com/slamchillz/platnova/util"
 )
@@ -21,17 +22,17 @@ func GenerateBalanceSummary(balanceSummary types.BalanceSummary, currencySymbol 
 		col.New(12).Add(
 			text.New("Balance Summary", props.Text{
 				Style: fontstyle.Bold,
-				Size:  5,
+				Size:  constant.BalanceSummaryHeaderFontSize,
 				Align: align.Left,
 			}),
 		),
 	)
-	rows = append(rows, sudHeader, row.New(3))
+	rows = append(rows, sudHeader, row.New(4))
 	rows = append(rows, generateBalanceSummaryTable(balanceSummary.Data, currencySymbol)...)
-	rows = append(rows, row.New(0.5), row.New(1).Add(
+	rows = append(rows, row.New(1), row.New(1).Add(
 		text.NewCol(12, balanceSummary.Note, props.Text{
 			Style: fontstyle.Normal,
-			Size:  2.4,
+			Size:  constant.BalanceSummaryNoteFontSize,
 			Align: align.Left,
 		}),
 	))
@@ -44,39 +45,39 @@ func generateBalanceSummaryTable(balanceSummaryData []types.BalanceData, currenc
 	var totalMoneyOut float64 = 0
 	var totalMoneyIn float64 = 0
 	var totalClosingBalance float64 = 0
-	tableHeader := row.New(1.5).Add(
+	tableHeader := row.New(2.5).Add(
 		col.New(4).Add(
 			text.New("Product", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Opening balance", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Money out", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Money in", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Closing balance", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Right,
 			}),
 		),
@@ -97,39 +98,39 @@ func generateBalanceSummaryTable(balanceSummaryData []types.BalanceData, currenc
 		totalMoneyIn += data.MoneyIn
 		totalClosingBalance += data.ClosingBalance
 
-		tmpRow := row.New(0.75).Add(
+		tmpRow := row.New(2).Add(
 			col.New(4).Add(
 				text.New(data.Product, props.Text{
 					Style: fontstyle.Normal,
 					Align: align.Left,
-					Size:  3,
+					Size:  constant.BalanceSummaryCellFontSize,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.OpenBalance)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.BalanceSummaryCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.MoneyOut)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.BalanceSummaryCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.MoneyIn)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.BalanceSummaryCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.ClosingBalance)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.BalanceSummaryCellFontSize,
 					Align: align.Right,
 				}),
 			),
@@ -150,34 +151,34 @@ func generateBalanceSummaryTable(balanceSummaryData []types.BalanceData, currenc
 			text.New("Total", props.Text{
 				Style: fontstyle.Normal,
 				Align: align.Left,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 			}),
 		),
 		col.New(2).Add(
 			text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(totalOpenBalance)), props.Text{
 				Style: fontstyle.Normal,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(totalMoneyOut)), props.Text{
 				Style: fontstyle.Normal,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(totalMoneyIn)), props.Text{
 				Style: fontstyle.Normal,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(totalClosingBalance)), props.Text{
 				Style: fontstyle.Normal,
-				Size:  3,
+				Size:  constant.BalanceSummaryCellFontSize,
 				Align: align.Right,
 			}),
 		),

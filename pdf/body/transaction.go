@@ -11,6 +11,7 @@ import (
 	"github.com/johnfercher/maroto/v2/pkg/consts/linestyle"
 	"github.com/johnfercher/maroto/v2/pkg/core"
 	"github.com/johnfercher/maroto/v2/pkg/props"
+	"github.com/slamchillz/platnova/constant"
 
 	"github.com/slamchillz/platnova/types"
 	"github.com/slamchillz/platnova/util"
@@ -18,16 +19,16 @@ import (
 
 func GenerateTransactions(td types.TransactionData, currencySymbol string) []core.Row {
 	var rows []core.Row
-	sudHeader := row.New(5).Add(
+	sudHeader := row.New(2).Add(
 		col.New(12).Add(
 			text.New(fmt.Sprintf("Account transactions from %s to %s", td.StartDate.HeaderFormat(), td.EndDate.HeaderFormat()), props.Text{
 				Style: fontstyle.Bold,
-				Size:  5,
+				Size:  constant.TransactionHeaderFontSize,
 				Align: align.Left,
 			}),
 		),
 	)
-	rows = append(rows, sudHeader, row.New(2))
+	rows = append(rows, sudHeader, row.New(4))
 	rows = append(rows, generateAccountTransactionTable(td.Records, currencySymbol)...)
 	return rows
 }
@@ -38,35 +39,35 @@ func generateAccountTransactionTable(transactionRecords []types.TransactionRecor
 		col.New(2).Add(
 			text.New("Date", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.TransactionCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(4).Add(
 			text.New("Description", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.TransactionCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Money out", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.TransactionCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Money in", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.TransactionCellFontSize,
 				Align: align.Left,
 			}),
 		),
 		col.New(2).Add(
 			text.New("Balance", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3,
+				Size:  constant.TransactionCellFontSize,
 				Align: align.Right,
 			}),
 		),
@@ -81,60 +82,60 @@ func generateAccountTransactionTable(transactionRecords []types.TransactionRecor
 		}),
 	))
 	for _, data := range transactionRecords {
-		fmt.Println(data.MoneyOut)
 		tmpRow := row.New(2).Add(
 			col.New(2).Add(
 				text.New(data.Date.TableFormat(), props.Text{
 					Style: fontstyle.Normal,
 					Align: align.Left,
-					Size:  3,
+					Size:  constant.TransactionCellFontSize,
 				}),
 			),
 			col.New(4).Add(
 				text.New(data.Description, props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.TransactionCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.MoneyOut)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.TransactionCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.MoneyIn)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.TransactionCellFontSize,
 					Align: align.Left,
 				}),
 			),
 			col.New(2).Add(
 				text.New(util.AddCurrencySymbol(currencySymbol, util.FormatNumber(data.Balance)), props.Text{
 					Style: fontstyle.Normal,
-					Size:  3,
+					Size:  constant.TransactionCellFontSize,
 					Align: align.Right,
 				}),
 			),
 		)
 		rows = append(rows, tmpRow)
-		rows = append(rows, row.New(1))
+		//rows = append(rows, row.New(0.5))
 		if data.DescriptionNote != "" {
 			rows = append(rows, row.New(1).Add(
 				col.New(2),
 				col.New(10).Add(
 					text.New(data.DescriptionNote, props.Text{
 						Style: fontstyle.Normal,
-						Size:  1.5,
+						Size:  2,
 						Align: align.Left,
+						//Bottom: 2,
 					}),
 				),
 			),
 			)
 		}
-		rows = append(rows, row.New(1).Add(
+		rows = append(rows, row.New(0.75), row.New(1).Add(
 			line.NewCol(12, props.Line{
 				Thickness: 0.15,
 				//Color:       &props.Color{Red: 200, Green: 200, Blue: 200},

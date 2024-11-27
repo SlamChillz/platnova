@@ -1,4 +1,4 @@
-package page
+package pdf
 
 import (
 	"github.com/johnfercher/maroto/v2/pkg/components/col"

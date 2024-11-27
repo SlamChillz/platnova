@@ -1,4 +1,4 @@
-package page
+package pdf
 
 import (
 	"github.com/johnfercher/maroto/v2/pkg/components/code"
@@ -14,7 +14,7 @@ import (
 func generateFooter() []core.Row {
 	var rows []core.Row
 	hereLink := "https://google.com"
-	topRow := row.New(5).Add(
+	topRow := row.New(6).Add(
 		code.NewQrCol(1, "qrcode", props.Rect{
 			Left:    1,
 			Percent: 100,
@@ -29,23 +29,23 @@ func generateFooter() []core.Row {
 			}),
 			text.New("+370 5 214 3608", props.Text{
 				Style: fontstyle.Normal,
-				Size:  2,
+				Size:  3,
 				Align: align.Left,
 				Top:   1.5,
 				Color: &props.Color{Red: 100, Green: 100, Blue: 100},
 			}),
 			text.New("Get help directly in app", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3.5,
+				Size:  3.6,
 				Align: align.Left,
-				Top:   2.5,
+				Top:   3,
 				Color: &props.Color{Red: 100, Green: 100, Blue: 100},
 			}),
 			text.New("Scan the QR code", props.Text{
 				Style: fontstyle.Normal,
-				Size:  2,
+				Size:  3,
 				Align: align.Left,
-				Top:   4,
+				Top:   4.5,
 				Color: &props.Color{Red: 100, Green: 100, Blue: 100},
 			}),
 		),
@@ -96,11 +96,11 @@ func generateFooter() []core.Row {
 		),
 	)
 	rows = append(rows, topRow)
-	rows = append(rows, row.New(1).Add(
+	rows = append(rows, row.New(2).Add(
 		col.New(3).Add(
 			text.New("© 2023 Revolut Bank UAB", props.Text{
 				Style: fontstyle.Bold,
-				Size:  3.5,
+				Size:  4,
 				Align: align.Left,
 				Top:   2.5,
 			}),

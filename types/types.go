@@ -3,6 +3,8 @@ package types
 import (
 	"log"
 	"time"
+
+	"github.com/slamchillz/platnova/constant"
 )
 
 // PlatnovaTime Custom Time with unique behaviours
@@ -15,7 +17,7 @@ func (p *PlatnovaTime) UnmarshalJSON(data []byte) error {
 	str = str[1 : len(str)-1]
 
 	// Define the layout of your date string
-	layout := DefaultDateFormat
+	layout := constant.DefaultDateFormat
 
 	// Parse the string into a time.Time
 	parsedTime, err := time.Parse(layout, str)

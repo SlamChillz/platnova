@@ -1,14 +1,12 @@
-package page
+package pdf
 
 import (
-	"fmt"
 	"github.com/johnfercher/maroto/v2"
 	"github.com/johnfercher/maroto/v2/pkg/config"
 	"github.com/johnfercher/maroto/v2/pkg/core"
-	"github.com/slamchillz/platnova/page/body"
+	"github.com/slamchillz/platnova/pdf/body"
 	"github.com/slamchillz/platnova/types"
 	"log"
-	"os"
 )
 
 type Page struct {
@@ -44,23 +42,16 @@ func (p *Page) assemble() {
 }
 
 func (p *Page) Create(outPutFile string) {
+	p.assemble()
 	document, err := p.maroto.Generate()
 	if err != nil {
 		log.Fatalln("Error generating document:", err)
-	}
-
-	filename := fmt.Sprintf("report.pdf")
-
-	// Check if temp folder exists, if not create it
-	if _, err := os.Stat("temp"); os.IsNotExist(err) {
-		err = os.Mkdir("temp", 0755)
-		if err != nil {
-			log.Println("Error creating directory:", err)
-		}
 	}
 
 	err = document.Save(outPutFile)
 	if err != nil {
 		log.Println("Unable to save file:", err)
 	}
+	log.Println("PDF Generated:", outPutFile)
+	return
 }
