@@ -8,9 +8,12 @@ Generate a pdf with a layout similar to the pdf image below:
 - Latest Go version
 - An IDE
 
-### Clone Repo
+### Clone Repo and Install Dependencies
 ```azure
 ~/platnova/pdf: git clone https://github.com/slamchillz/platnova.git
+
+# Install and update dependencies
+~/platnova/pdf: go mod tidy
 ```
 
 ### Build the binary
